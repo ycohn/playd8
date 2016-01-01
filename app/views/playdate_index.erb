@@ -1,0 +1,8 @@
+<h1>Playdates List</h1>
+
+
+<ul>
+<% @playdates.each do |playdate| %>  
+<li><a href=<%="/playdates/#{playdate.id}"%>><%= playdate.location %></a></li>
+<% end %>
+</ul>

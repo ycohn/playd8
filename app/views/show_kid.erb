@@ -1,0 +1,15 @@
+<h1><%=@kid.name%></h1>
+<h2>Some Information About Me:</h2>
+<h3>My <%=@kid.parent.gender%> is <a href=<%="/parents/#{@kid.parent.id}"%>><%= @kid.parent.name %></a></h3>
+<h3>My Playdates:</h3>
+<ul>
+<% @kid.playdates.each do |playdate| %>
+  <li><h4><a href=<%="/playdates/#{playdate.id}"%>><%= playdate.location %></a></h4></li>
+    <p>Playmates</p>
+    <% playdate.kids.each do |kid| %>
+    <ul>
+      <li><h4><a href=<%="/kids/#{kid.id}"%>><%= kid.name %></a></h4></li>
+    </ul>
+    <% end %>
+<% end %>
+</ul>

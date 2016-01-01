@@ -1,0 +1,8 @@
+<h1>Parents List</h1>
+
+
+<ul>
+<% @parents.each do |parent| %>  
+<li><a href=<%="/parents/#{parent.id}"%>><%= parent.name %></a></li>
+<% end %>
+</ul>

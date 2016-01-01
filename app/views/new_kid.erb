@@ -1,0 +1,23 @@
+  <h1>Add a Kid</h1> 
+
+  <form action="/kids/new" method="POST">
+    <label>Child's Name:</label>
+
+      <br></br>
+
+    <input id="name" type="text" name="name">
+
+      <br></br>
+
+
+  <label>Pick a Parent</label>
+
+  <select name="parent">
+  <%@parents = Parent.all%>
+  <%@parents.each do |parent|%>
+  <option value="<%= parent.name %>"><%=parent.name%></option>
+  <%end%>
+</select>
+
+    <input id="Create" type="submit" value="Add Kid">
+</form>

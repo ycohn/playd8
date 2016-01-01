@@ -1,0 +1,22 @@
+ <h1>Edit Playdate</h1> 
+
+  <form action="/playdates/edit" method="POST">
+
+  <input type="hidden" name="id" value="<%= @playdate.id %>">
+
+    <label>Where are we playing?</label>
+
+      <br></br>
+
+    <input id="location" type="text" name="location">
+
+      <br></br>
+
+<label>Who's coming?</label>
+<br></br>
+<%Kid.all.each do |kid|%>
+    <input id="kids" type="checkbox" name="kids[]" value="<%=kid.name%>"><%=kid.name%></input>
+<%end%>
+<br></br>
+<input id="Create" type="submit" value="Edit Playdate">
+</form>

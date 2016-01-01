@@ -1,0 +1,17 @@
+<h1>Kids List</h1>
+
+
+<ul>
+<% @kids.each do |kid| %>  
+<li><a href=<%="/kids/#{kid.id}"%>><%= kid.name %></a></li>
+<% end %>
+</ul>
+
+<ul>
+<li><a href=<%="/parents"%>>Current Parents</a></li>
+<li><a href=<%="/kids"%>>Current Kids</a></li>
+<li><a href=<%="/playdates"%>>Current Playdates</a></li>
+<li><a href=<%="/parents/new"%>>Create a New Parent</a></li>
+<li><a href=<%="/kids/new"%>>Add a Kid</a></li>
+<li><a href=<%="/playdates/new"%>>Make a Playdate</a></li>
+</ul>

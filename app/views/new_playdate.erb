@@ -1,0 +1,19 @@
+ <h1>Make a Playdate!</h1> 
+
+  <form action="/playdates/new" method="POST">
+    <label>Where are we playing?</label>
+
+      <br></br>
+
+    <input id="location" type="text" name="location">
+
+      <br></br>
+
+<label>Who's coming?</label>
+<br></br>
+<%Kid.all.each do |kid|%>
+    <input id="kids" type="checkbox" name="kids[]" value="<%=kid.name%>"><%=kid.name%></input>
+<%end%>
+<br></br>
+<input id="Create" type="submit" value="Let's Play!">
+</form>

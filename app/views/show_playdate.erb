@@ -1,0 +1,10 @@
+
+<h2>Where are we playing?</h2> 
+<h1><%= @playdate.location %></h1>
+
+<h3>Who's Playing?</h3>
+<ul>
+<% @playdate.kids.each do |kid| %>  
+<li><a href=<%="/kids/#{kid.id}"%>><%= kid.name %></a></li>
+<% end %>
+</ul>

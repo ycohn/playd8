@@ -1,0 +1,11 @@
+<h1><%= @parent.name %></h1>
+
+<h2>Some Information About Me:</h2>
+
+<h3>My kids are: </h3>
+<ul>
+<% @parent.kids.each do |kid| %>  
+<li><a href=<%="/kids/#{kid.id}"%>><%= kid.name %></a></li>
+<% end %>
+</ul>
+
