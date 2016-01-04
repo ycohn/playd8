@@ -10,7 +10,7 @@
 
       <br></br>
 
-    <input id="name" type="text" name="name">
+    <input id="name" type="text" name="name" placeholder="<%= @kid.name%>">
 
       <br></br>
 
@@ -20,9 +20,14 @@
   <select name="parent">
   <%@parents = Parent.all%>
   <%@parents.each do |parent|%>
-  <option value="<%= parent.name %>"><%=parent.name%></option>
+   <% if parent.name == @kid.parent.name %>
+      <option value="<%= parent.name %>" selected><%=parent.name%></option>
+   <% else %>
+      <option value="<%= parent.name %>"><%=parent.name%></option>
+   <% end %>
   <%end%>
 </select>
-
+<p>The current parent is: <%= @kid.parent.name %></p>
+<br></br>
     <input id="Create" type="submit" value="Edit Kid">
 </form>

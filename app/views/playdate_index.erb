@@ -2,7 +2,9 @@
 
 
 <ul>
-<% @playdates.each do |playdate| %>  
+<% @playdates.each do |playdate| %>
+  <% if playdate.kids.count != 0 %> 
 <li><a href=<%="/playdates/#{playdate.id}"%>><%= playdate.location %></a></li>
+  <% end %>
 <% end %>
 </ul>

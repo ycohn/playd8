@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <link href="<%= url('../style.css') %>" rel="stylesheet" type="text/css" />
+    <title></title>
+
+  </head>
+
+  <body>
+  <center><img src="<%= url('../playd8_logo.png') %>" alt="playdate_logo" align="middle"></center>
+  <br>
+  <div class="wrapper">
+    <%= yield %>
+
+ <div class="push"></div>
+        </div>
+        <div class="footer">
+<p>Looking for Something? Click Below:</p>
+* <a href=<%="/"%>>Home Page</a> * <a href=<%="/parents"%>>Current Parents</a>  * <a href=<%="/kids"%>>Current Kids</a>  * <a href=<%="/playdates"%>>Current Playdates</a>  * <a href=<%="/parents/new"%>>Create a New Parent</a>  * <a href=<%="/kids/new"%>>Add a Kid</a>  *  <a href=<%="/playdates/new"%>>Make a Playdate</a> *
+</div>
+  </body>
+</html>

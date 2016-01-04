@@ -8,14 +8,14 @@
 
       <br></br>
 
-    <input id="location" type="text" name="location">
+    <input id="location" type="text" name="location" value="<%= @playdate.location%>">
 
       <br></br>
 
 <label>Who's coming?</label>
 <br></br>
 <%Kid.all.each do |kid|%>
-    <input id="kids" type="checkbox" name="kids[]" value="<%=kid.name%>"><%=kid.name%></input>
+    <input id="kids" type="checkbox" name="kids[]" value="<%=kid.name%>" <%= "checked" if @playdate.kids.include?(kid) %>><%=kid.name%></input>
 <%end%>
 <br></br>
 <input id="Create" type="submit" value="Edit Playdate">

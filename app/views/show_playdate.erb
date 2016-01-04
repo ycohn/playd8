@@ -8,3 +8,14 @@
 <li><a href=<%="/kids/#{kid.id}"%>><%= kid.name %></a></li>
 <% end %>
 </ul>
+
+
+<form action=<%="/playdates/#{@playdate.id}/edit"%> method="get">
+ <input type="hidden" name="id" value="<%= @playdate.id %>">
+  <p><input type="submit" value="Edit This Playdate"></p>
+</form>
+
+<form action=<%="/playdates/delete"%> method="post">
+ <input type="hidden" name="id" value="<%= @playdate.id %>">
+  <p><input type="submit" value="Delete This Playdate"></p>
+</form>

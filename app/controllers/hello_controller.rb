@@ -67,6 +67,7 @@ class HelloController < ApplicationController
   get '/parents/:id' do
     #binding.pry
     @parent = Parent.find(params[:id])
+    #binding.pry
     erb :show_parent
   end
 
@@ -118,6 +119,33 @@ class HelloController < ApplicationController
     @playdate.update(location: params[:location], kids: kid)
     @playdate.save
     redirect to "/playdates/#{@playdate.id}"
+  end
+
+  post '/kids/delete' do
+    @kid = Kid.find(params[:id])
+    @parent = @kid.parent
+    if @parent.kids.count == 1
+      Kid.destroy(@kid.id)
+      Parent.destroy(@parent.id)
+    else
+      Kid.destroy(@kid.id)
+    end
+    redirect to '/'
+  end
+
+  post '/parents/delete' do
+    @parent = Parent.find(params[:id])
+    Parent.destroy(@parent.id)
+    @parent.kids.each do |kid|
+      kid.destroy
+    end
+    redirect to '/'
+  end
+
+  post '/playdates/delete' do
+    @playdate = Playdate.find(params[:id])
+    Playdate.destroy(@playdate.id)
+    redirect to '/'
   end
 
 

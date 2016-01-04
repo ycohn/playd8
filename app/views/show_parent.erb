@@ -9,3 +9,26 @@
 <% end %>
 </ul>
 
+<h3>I will be at the following playdates: </h3>
+<ul>
+<% @parent.kids.each do |kid| %> 
+<% kid.playdates.each do |playdate| %>   
+<li><a href=<%="/playdates/#{playdate.id}"%>><%= playdate.location %></a></li>
+<% end %>
+<% end %>
+</ul>
+
+<a href=<%="/kids/new"%>>Add a Kid</a>
+
+<form action=<%="/parents/#{@parent.id}/edit"%> method="get">
+ <input type="hidden" name="id" value="<%= @parent.id %>">
+  <p><input type="submit" value="Edit This Parent"></p>
+</form>
+
+
+<form action=<%="/parents/delete"%> method="post">
+ <input type="hidden" name="id" value="<%= @parent.id %>">
+  <p><input type="submit" value="Delete This Parent"></p>
+</form>
+
+

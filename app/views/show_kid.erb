@@ -1,15 +1,46 @@
 <h1><%=@kid.name%></h1>
 <h2>Some Information About Me:</h2>
 <h3>My <%=@kid.parent.gender%> is <a href=<%="/parents/#{@kid.parent.id}"%>><%= @kid.parent.name %></a></h3>
+<h3>My Siblings:</h3>
+<% if @kid.parent.kids.count < 2 %>
+  <p>I have no siblings.</p>
+<% else %>
+  <% @kid.parent.kids.each do |sib| %>
+    <% if sib.name != @kid.name %>
+      <li><h4><a href=<%="/kids/#{sib.id}"%>><%= sib.name %></a></h4></li>
+    <%end%>
+  <%end%>
+<%end%>
 <h3>My Playdates:</h3>
+<% if @kid.playdates.count == 0 %>
+  <p>I have no playdates. Will you please make a playdate for me?</p>
+<% else %>
 <ul>
 <% @kid.playdates.each do |playdate| %>
   <li><h4><a href=<%="/playdates/#{playdate.id}"%>><%= playdate.location %></a></h4></li>
     <p>Playmates</p>
     <% playdate.kids.each do |kid| %>
     <ul>
-      <li><h4><a href=<%="/kids/#{kid.id}"%>><%= kid.name %></a></h4></li>
+      <% if kid.name != @kid.name %>
+        <li><h4><a href=<%="/kids/#{kid.id}"%>><%= kid.name %></a></h4></li>
+      <% end %>
     </ul>
     <% end %>
 <% end %>
 </ul>
+<% end %>
+
+<a href=<%="/kids/new"%>>Add Another Kid</a>
+<br></br>
+<a href=<%="/playdates/new"%>>Make a Playdate!</a>
+
+
+<form action=<%="/kids/#{@kid.id}/edit"%> method="get">
+ <input type="hidden" name="id" value="<%= @kid.id %>">
+  <p><input type="submit" value="Edit This Kid"></p>
+</form>
+
+<form action=<%="/kids/delete"%> method="post">
+ <input type="hidden" name="id" value="<%= @kid.id %>">
+  <p><input type="submit" value="Delete This Kid"></p>
+</form>
